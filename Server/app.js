@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
  require("dotenv").config();
+ const MongoStore = require('connect-mongo');
 const authRoutes = require('./routes/authRoutes');
 const bookingRoutes = require('./routes/bookingRoutes');
 const profileRoutes = require('./routes/profileRoutes');
@@ -11,13 +12,23 @@ const notificationRoutes = require('./routes/notificationRoutes');
 const dealRoutes = require('./routes/dealRoutes');
 const errorMiddleware = require('./middleware/errorMiddleware');
 const conectTodb = require('./config/mongo');
-
+const session = require("express-session");
 const app = express();
-
+app.use(express.json());
 
 
 app.use(cors());
-app.use(express.json());
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({ mongoUrl: process.env.MONGO_URL }),
+    cookie: {
+      // secure: true,
+      httpOnly: true,
+    }
+  }));
+
 app.get('/',(req,res)=>{
     try {
         res.status(200).json({message:"this is a home route"})
