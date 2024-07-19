@@ -11,10 +11,10 @@ const UserSchema = new mongoose.Schema({
   },
   password: {type: String,
     required: true,},
-    preferences: {
-    type: Map,
-    of: String,
-    },
+    // preferences: {
+    // type: Map,
+    // of: String,
+    // },
     date: {
     type: Date,
     default: Date.now,
