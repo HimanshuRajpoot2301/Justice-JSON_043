@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-//GET BY ID
+//GET BY ID some
 router.get("/:id", async (req, res) => {
   try {
     const flight = await Flight.findById(req.params.id);
