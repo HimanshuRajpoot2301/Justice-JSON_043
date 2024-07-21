@@ -25,7 +25,7 @@ const FilterC = () => {
           <div className={stylef.boxdiv}>
             <div className={stylef.checkboxdiv}>
               <input type="checkbox" name="vehicle1" value="Bike" />
-              <span>Bengauru</span>
+              <span>Bengaluru</span>
             </div>
 
             <div className={stylef.vlaue}>(15)</div>

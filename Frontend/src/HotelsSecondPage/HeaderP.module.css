@@ -28,16 +28,11 @@
 
 /* second  middle */
 
-.titleMapDiv {
-  display: flex;
-  justify-content: space-between;
-  margin: 15px 0px 0px;
-}
 
 .titleMapDiv p {
   font-size: 36px;
   font-weight: bold;
-  margin-top: 55px;
+  margin-top: 20px;
 }
 
 .map_img {
@@ -50,7 +45,7 @@
 
 .searchDiv {
   /* margin: 10px 0px 0px; */
-  margin-top: -30px;
+  
 
   display: flex;
   justify-content: space-between;
@@ -79,13 +74,13 @@
   padding: 0px 0px 0px 30px;
   box-sizing: border-box;
   gap: 10px;
-  margin-bottom: 17px;
+  /* margin-bottom: 17px; */
   margin-top: -3px;
 }
 
 .find_location_div input {
   border: none;
-  width: 237px;
+  width: 200px;
   border-radius: 4px;
   outline: none;
 }

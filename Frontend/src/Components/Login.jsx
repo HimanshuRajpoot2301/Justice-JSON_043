@@ -185,7 +185,8 @@ export default function FormDialog() {
 
   return (
     <div>
-      <div className={styles.btn}>
+      <div  style={{padding:"6px"}}
+      className={styles.btn}>
         <Button onClick={handleClickOpen}>Login or create account</Button>
       </div>
       <Dialog PaperProps={{ sx: dialogCss }} open={open} onClose={handleClose}>
@@ -240,10 +241,10 @@ export default function FormDialog() {
                 </div>
                 <div className={styles.loginsignup_text}>LOGIN</div>
                 <div className={styles.google_login_container}>
-                  <img
+                  {/* <img
                     src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
                     alt="google logo"
-                  />
+                  /> */}
                   <div>Login With Google</div>
                 </div>
 

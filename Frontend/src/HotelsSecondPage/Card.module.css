@@ -4,7 +4,8 @@
   border: 1px solid gray;
   border-radius: 4px;
   display: flex;
-
+ 
+ padding: 15px;
   height: 280px;
   justify-content: space-between;
   /* padding: 20px; */
@@ -26,6 +27,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: sans-serif;
 }
 
 .leftdiv .bigimg img {
@@ -34,6 +36,7 @@
   width: 247px;
   padding: 20px;
   border-radius: 4px 4px 0px 0px;
+  font-family: sans-serif;
 }
 .leftdiv .smallimg {
   display: flex;
@@ -49,28 +52,34 @@
 .middlediv {
   /* background-color: aquamarine; */
   margin: 0px 0px 0px 20px;
+  font-family: sans-serif;
 }
 .middlediv .first_div {
   display: flex;
+  font-family: sans-serif;
 }
 
 .middlediv .first_div span {
   font-size: 24px;
   /* font-weight: bold; */
+  font-family: sans-serif;
 }
 
 .middlediv .first_div.rating {
   display: flex;
   flex-direction: column;
+  font-family: sans-serif;
 }
 
 .middlediv .first_div .rating p {
   font-size: 11px;
   color: #4a4a4a;
+  font-family: sans-serif;
 }
 .middlediv .first_div .rating p span {
   font-size: 11px;
   /* font-weight: bold; */
+  font-family: sans-serif;
 }
 .rating {
   display: flex;
@@ -78,11 +87,13 @@
   justify-content: center;
   align-items: center;
   gap: 0px;
+  font-family: sans-serif;
 }
 
 .rating > p {
   margin: 0px;
   padding: 0px;
+  font-family: sans-serif;
 }
 .icon_ratingdiv {
   display: flex;
@@ -90,6 +101,7 @@
   align-items: center;
   justify-content: center;
   margin: 0px 50px;
+  font-family: sans-serif;
 }
 
 .icon_ratingdiv img {
@@ -101,10 +113,12 @@
   font-weight: bold;
   color: #fff;
   /* background-color: red; */
+  font-family: sans-serif;
 }
 .icon_ratingdiv .rating_p span {
   font-weight: bold;
   font-size: 12px;
+  font-family: sans-serif;
 }
 
 /* last */
@@ -115,10 +129,12 @@
   justify-content: space-between;
   text-align: right;
   width: 220px;
+  font-family: sans-serif;
 }
 .cost {
   margin: 120px 0px;
   padding: 20px;
+  font-family: sans-serif;
 }
 
 .cutting_cost {
@@ -127,21 +143,25 @@
   /* margin: 0px 0px 5px; */
   text-decoration: line-through;
   margin-top: 0px;
+  font-family: sans-serif;
 }
 .actuall_cost {
   font-size: 26px;
   font-weight: bold;
   margin-top: 0px;
+  font-family: sans-serif;
 }
 
 .taxes_cost {
   font-size: 12px;
   color: #4a4a4a;
+  font-family: sans-serif;
 }
 
 .romm_cost {
   font-size: 10px;
   color: #9b9b9b;
+  font-family: sans-serif;
 }
 
 /* last discount container */
@@ -156,15 +176,18 @@
   /* margin: auto; */
   margin-bottom: 20px;
   width: 86.5%;
+  font-family: sans-serif;
 }
 
 .infoicon {
   margin: 0px 10px 0px 0px;
   color: #1a7179;
+
 }
 
 .discount_title {
   color: #1a7179;
   font-size: 14px;
+  font-family: sans-serif;
   font-weight: bold;
 }
