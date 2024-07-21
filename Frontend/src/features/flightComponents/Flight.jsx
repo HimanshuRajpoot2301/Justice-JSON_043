@@ -1,137 +1,127 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SingleFlight } from './SingleFlight';
 import styles from './singleflight.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addFlights, flightError, flightLoading } from './flightSlice';
 import { CircularProgress, Slider } from '@mui/material';
-import { useState } from 'react';
+
 export const Flight = () => {
   const [flight, setFlight] = useState([]);
+  const [filteredFlights, setFilteredFlights] = useState([]);
   const [duration, setDuration] = useState(true);
   const [departure, setDeparture] = useState(true);
   const [arrival, setArrival] = useState(true);
   const [fare, setFare] = useState(true);
-  const [check, setCheck] = useState(true);
+  const [check, setCheck] = useState({
+    departure_1: false,
+    departure_2: false,
+    departure_3: false,
+    departure_4: false,
+    non_stop: false,
+    one_stop: false,
+  });
   const [value, setValue] = useState([0, 45]);
-  const [stopCheck, setStopCheck] = useState(true);
-  let { loading, error, flights } = useSelector((state) => ({
+
+  const { loading, error, flights } = useSelector((state) => ({
     loading: state.flight.loading,
     error: state.flight.error,
     flights: state.flight.flightDetails,
   }));
+
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    getFlight();
+  }, []);
+
+  useEffect(() => {
+    applyFilters();
+  }, [check, value]);
+
   const getFlight = () => {
-    console.log(stopCheck, check);
-    console.log('getFlight');
     dispatch(flightLoading());
     fetch('https://justice-json-043.onrender.com/flights')
       .then((r) => r.json())
       .then((r) => {
         dispatch(addFlights(r));
         setFlight(r);
+        setFilteredFlights(r);
       })
       .catch((e) => dispatch(flightError()));
   };
 
+  const applyFilters = () => {
+    let updatedFlights = flight.slice();
+
+    // Apply departure time filters
+    if (check.departure_1) {
+      updatedFlights = updatedFlights.filter(
+        (item) => item.departure_time.split(':').join('') < '0600'
+      );
+    }
+    if (check.departure_2) {
+      updatedFlights = updatedFlights.filter(
+        (item) =>
+          item.departure_time.split(':').join('') >= '0600' &&
+          item.departure_time.split(':').join('') < '1200'
+      );
+    }
+    if (check.departure_3) {
+      updatedFlights = updatedFlights.filter(
+        (item) =>
+          item.departure_time.split(':').join('') >= '1200' &&
+          item.departure_time.split(':').join('') < '1800'
+      );
+    }
+    if (check.departure_4) {
+      updatedFlights = updatedFlights.filter(
+        (item) => item.departure_time.split(':').join('') >= '1800'
+      );
+    }
+
+    // Apply stop filters
+    if (check.non_stop) {
+      updatedFlights = updatedFlights.filter((item) => item.stops === 'Non stop');
+    }
+    if (check.one_stop) {
+      updatedFlights = updatedFlights.filter((item) => item.stops !== 'Non stop');
+    }
+
+    setFilteredFlights(updatedFlights);
+  };
+
+  const handleFilterChange = (name) => {
+    setCheck((prevState) => ({ ...prevState, [name]: !prevState[name] }));
+  };
+
   const sorting = (tag) => {
+    let sortedFlights = filteredFlights.slice();
+
     if (tag === 'departure') {
-      if (departure === true) {
-        flights = flight.slice().sort((a, b) => {
-          return (
-            a.departure_time.split(':').join('') -
-            b.departure_time.split(':').join('')
-          );
-        });
-        setFlight(flights);
-      } else {
-        flights = flight.slice().sort((a, b) => {
-          return (
-            b.departure_time.split(':').join('') -
-            a.departure_time.split(':').join('')
-          );
-        });
-        setFlight(flights);
-      }
+      sortedFlights.sort((a, b) => {
+        const timeA = a.departure_time.split(':').join('');
+        const timeB = b.departure_time.split(':').join('');
+        return departure ? timeA - timeB : timeB - timeA;
+      });
+      setDeparture(!departure);
     }
+
     if (tag === 'arrival') {
-      if (arrival === true) {
-        flights = flight.slice().sort((a, b) => {
-          return (
-            a.arrival_time.split(':').join('') -
-            b.arrival_time.split(':').join('')
-          );
-        });
-        setFlight(flights);
-      } else {
-        flights = flight.slice().sort((a, b) => {
-          return (
-            b.arrival_time.split(':').join('') -
-            a.arrival_time.split(':').join('')
-          );
-        });
-        setFlight(flights);
-      }
+      sortedFlights.sort((a, b) => {
+        const timeA = a.arrival_time.split(':').join('');
+        const timeB = b.arrival_time.split(':').join('');
+        return arrival ? timeA - timeB : timeB - timeA;
+      });
+      setArrival(!arrival);
     }
+
     if (tag === 'fare') {
-      if (fare === true) {
-        flights = flight.slice().sort((a, b) => a.fare - b.fare);
-        setFlight(flights);
-      } else {
-        flights = flight.slice().sort((a, b) => b.fare - a.fare);
-        setFlight(flights);
-      }
+      sortedFlights.sort((a, b) => (fare ? a.fare - b.fare : b.fare - a.fare));
+      setFare(!fare);
     }
+
+    setFilteredFlights(sortedFlights);
   };
-  const handleFilters = (info) => {
-    console.log('fliter');
-    console.log(stopCheck, check);
-    if (info.startsWith('departure')) {
-      if (info === 'departure_1') {
-        flights = flight.filter(
-          (item) => item.departure_time.split(':').join('') < Number('0060')
-        );
-
-        setFlight([...flights]);
-      }
-      if (info === 'departure_2') {
-        flights = flight.filter(
-          (item) =>
-            item.departure_time.split(':').join('') >= Number('0060') &&
-            item.departure_time.split(':').join('') <= Number('0000')
-        );
-
-        setFlight(flights);
-      }
-      if (info === 'departure_3') {
-        flights = flight.filter(
-          (item) =>
-            item.departure_time.split(':').join('') >= Number('0000') &&
-            item.departure_time.split(':').join('') <= Number('1600')
-        );
-
-        setFlight(flights);
-      }
-      if (info === 'departure_4') {
-        flights = flight.filter(
-          (item) => item.departure_time.split(':').join('') >= Number('1600')
-        );
-
-        setFlight(flights);
-      }
-    }
-    if (info.startsWith('non_stop')) {
-      flights = flight.filter((item) => item.stops === 'Non stop');
-      setFlight(flights);
-    }
-    if (info.startsWith('1_stop')) {
-      flights = flight.filter((item) => item.stops !== 'Non stop');
-      setFlight(flights);
-    }
-  };
-
-  useEffect(() => {
-    getFlight();
-  }, []);
 
   return (
     <div>
@@ -152,7 +142,11 @@ export const Flight = () => {
                   <span>Refundable Fares</span>
                 </div>
                 <div className={styles.filterCheck}>
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    checked={check.non_stop}
+                    onChange={() => handleFilterChange('non_stop')}
+                  />
                   <span>Non stop</span>
                 </div>
                 <div className={styles.filterCheck}>
@@ -165,7 +159,7 @@ export const Flight = () => {
                 </div>
                 <div className={styles.filterCheck}>
                   <input type="checkbox" />
-                  <span> Late Departure</span>
+                  <span>Late Departure</span>
                 </div>
                 <div className={styles.filterCheck}>
                   <input type="checkbox" />
@@ -180,44 +174,37 @@ export const Flight = () => {
                   <span>Air India</span>
                 </div>
               </div>
-              <div
-                className={styles.first}
-                onChange={(e) => {
-                  check ? handleFilters(e.target.name) : getFlight();
-                }}
-                // onChange={(e) => handleFilters(e.target.name)}
-              >
+              <div className={styles.first}>
                 <b>Departure From New Delhi</b>
                 <div className={styles.filterCheck}>
                   <input
                     type="checkbox"
-                    // checked={check}
-                    onClick={() => setCheck(!check)}
-                    name={'departure_1'}
+                    checked={check.departure_1}
+                    onChange={() => handleFilterChange('departure_1')}
                   />
                   <span>Before 6 AM</span>
                 </div>
                 <div className={styles.filterCheck}>
                   <input
                     type="checkbox"
-                    onClick={() => setCheck(!check)}
-                    name="departure_2"
+                    checked={check.departure_2}
+                    onChange={() => handleFilterChange('departure_2')}
                   />
                   <span>6 AM - 12 PM</span>
                 </div>
                 <div className={styles.filterCheck}>
                   <input
                     type="checkbox"
-                    onClick={() => setCheck(!check)}
-                    name="departure_3"
+                    checked={check.departure_3}
+                    onChange={() => handleFilterChange('departure_3')}
                   />
                   <span>12 PM to 6 PM</span>
                 </div>
                 <div className={styles.filterCheck}>
                   <input
                     type="checkbox"
-                    onClick={() => setCheck(!check)}
-                    name="departure_4"
+                    checked={check.departure_4}
+                    onChange={() => handleFilterChange('departure_4')}
                   />
                   <span>After 6 PM</span>
                 </div>
@@ -225,33 +212,26 @@ export const Flight = () => {
               <div className={styles.first}>
                 <b>One Way Price</b>
                 <Slider
-                  // getAriaLabel={() => "Temperature range"}
-
                   value={value}
+                  onChange={(e, newValue) => setValue(newValue)}
                   valueLabelDisplay="auto"
                 />
               </div>
-              <div
-                onChange={(e) => {
-                  stopCheck ? handleFilters(e.target.name) : getFlight();
-                }}
-                className={styles.first}
-              >
+              <div className={styles.first}>
                 <b>Stops From New Delhi</b>
-
                 <div className={styles.filterCheck}>
                   <input
                     type="checkbox"
-                    onClick={() => setStopCheck(!stopCheck)}
-                    name="non_stop"
+                    checked={check.non_stop}
+                    onChange={() => handleFilterChange('non_stop')}
                   />
                   <span>Non Stop</span>
                 </div>
                 <div className={styles.filterCheck}>
                   <input
                     type="checkbox"
-                    onClick={() => setStopCheck(!stopCheck)}
-                    name="1_stop"
+                    checked={check.one_stop}
+                    onChange={() => handleFilterChange('one_stop')}
                   />
                   <span>1 Stop</span>
                 </div>
@@ -268,15 +248,15 @@ export const Flight = () => {
                 </div>
                 <div className={styles.filterCheck}>
                   <input type="checkbox" />
-                  <span> Vistara (3)</span>
+                  <span>Vistara (3)</span>
                 </div>
                 <div className={styles.filterCheck}>
                   <input type="checkbox" />
-                  <span> Go First (3)</span>
+                  <span>Go First (3)</span>
                 </div>
                 <div className={styles.filterCheck}>
                   <input type="checkbox" />
-                  <span> Spice Jet (3)</span>
+                  <span>Spice Jet (3)</span>
                 </div>
               </div>
             </div>
@@ -309,7 +289,6 @@ export const Flight = () => {
                   <p
                     onClick={() => {
                       sorting('departure');
-                      setDeparture(!departure);
                     }}
                   >
                     Departure {departure ? <>&#8595;</> : <>&#8593;</>}
@@ -318,7 +297,6 @@ export const Flight = () => {
                   <p
                     onClick={() => {
                       sorting('arrival');
-                      setArrival(!arrival);
                     }}
                   >
                     Arrival {arrival ? <>&#8595;</> : <>&#8593;</>}
@@ -326,14 +304,13 @@ export const Flight = () => {
                   <p
                     onClick={() => {
                       sorting('fare');
-                      setFare(!fare);
                     }}
                   >
                     Price {fare ? <>&#8595;</> : <>&#8593;</>}
                   </p>
                 </div>
               </div>
-              {flight.map((item) => (
+              {filteredFlights.map((item) => (
                 <React.Fragment key={item._id}>
                   <SingleFlight {...item} />
                 </React.Fragment>

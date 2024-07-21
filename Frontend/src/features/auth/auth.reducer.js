@@ -10,29 +10,29 @@ import { updateValue } from '../../Utils/LocalStorage';
 import { initialState } from './auth.constants';
 
 export const authReducer = (state = initialState, { type, payload }) => {
-  console.log(payload);
   switch (type) {
     case USER_LOGIN_REQUEST: {
       return {
-        ...state.auth,
+        ...state,
         isLoading: true,
         error: false,
       };
     }
     case USER_LOGIN_SUCCESS: {
-      updateValue('userToken', payload.authToken);
+      const token = payload.authToken || ''; // Ensure payload.authToken is a string
+      updateValue('userToken', token);
       return {
-        ...state.auth,
+        ...state,
         isUserLoggedIn: true,
         isLoading: false,
         error: false,
-        ...payload,
+        userToken: token,
       };
     }
     case USER_LOGIN_ERROR: {
-      updateValue('userToken', payload.authToken);
+      // Handle case where payload might not have authToken
       return {
-        ...state.auth,
+        ...state,
         isUserLoggedIn: false,
         isLoading: false,
         error: true,
@@ -42,33 +42,36 @@ export const authReducer = (state = initialState, { type, payload }) => {
       updateValue('userToken', '');
       updateValue('userName', '');
       return {
-        ...state.auth,
+        ...state,
         isUserLoggedIn: false,
         userToken: '',
+        userName: '',
       };
     }
     case USER_SIGN_UP: {
-      updateValue('userToken', payload.authToken);
+      const token = payload.authToken || ''; // Ensure payload.authToken is a string
+      updateValue('userToken', token);
       return {
-        ...state.auth,
+        ...state,
         isUserLoggedIn: true,
         isLoading: false,
         error: false,
+        userToken: token,
       };
     }
     case USER_NAME: {
-      updateValue('userName', payload);
+      const name = typeof payload === 'string' ? payload : ''; // Ensure payload is a string
+      updateValue('userName', name);
       return {
-        ...state.auth,
+        ...state,
         isUserLoggedIn: true,
         isLoading: false,
         error: false,
-        userName: payload,
-        ...payload,
+        userName: name,
       };
     }
     default: {
-      return { ...state };
+      return state;
     }
   }
 };
