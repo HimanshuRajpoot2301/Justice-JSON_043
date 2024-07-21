@@ -31,7 +31,7 @@ const Registration = () => {
         password: credentials.password,
       };
       const response = await fetch(
-        'https://makemytripback.herokuapp.com/auth/register',
+        'https://justice-json-043.onrender.com/auth/register',
         {
           method: 'POST',
           headers: {

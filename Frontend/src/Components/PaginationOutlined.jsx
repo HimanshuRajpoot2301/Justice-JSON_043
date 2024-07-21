@@ -14,7 +14,7 @@ export default function PaginationOutlined() {
   const [travellers, setTravellers] = useState(1);
   const [openTravellers, setOpenTravellers] = useState(false);
   return (
-    <div>
+    <div >
       <div onClick={() => setOpenTravellers(!openTravellers)}>
         {travellers} {travellers > 1 ? 'Travellers' : 'Traveller'}
       </div>

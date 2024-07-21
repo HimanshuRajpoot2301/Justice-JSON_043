@@ -54,7 +54,7 @@
 }
 .counteryName {
   display: flex;
-  gap: 3px;
+  gap: 8px;
   justify-content: flex-end;
 }
 

@@ -8,10 +8,10 @@ const Qna = () => {
       <div className={style_qna.container}>
         <div className={style_qna.top}>
           <div className={style_qna.left}>
-            <h3> Q. How to book a hotel online with MakeMyTrip?</h3>
+            <h3> Q. How to book a hotel online with Travello?</h3>
 
             <p>
-              A. Booking a hotel online is easy through MakeMyTrip. All you need
+              A. Booking a hotel online is easy through Travello. All you need
               to do first is to download our app <br /> on your Android or iOS
               device or simply use your computer. On the app, tap on the Hotels
               section on <br /> the top left corner and enter the details of the
@@ -27,7 +27,7 @@ const Qna = () => {
             <h4>Q. How to find the cheapest hotel deals in any city?</h4>
 
             <p>
-              A. MakeMyTrip, being the best hotel-booking site in the country,
+              A. Travello, being the best hotel-booking site in the country,
               offers several discounts on budget <br /> hotels as well. If you
               are looking for the cheapest hotels with amazing deals on the app,
               you can tap on <br /> Sort & Filter option and drag down the Price
@@ -62,15 +62,15 @@ const Qna = () => {
             </p>
           </div>
           <div className={style_qna.left}>
-            <h4>Q. Where can I find current deals and offers of MakeMyTrip?</h4>
+            <h4>Q. Where can I find current deals and offers of Travello?</h4>
             <p>
-              A. MakeMyTrip offers plenty of deals and offers on luxury and
+              A. Travello offers plenty of deals and offers on luxury and
               budget hotels in India in all the cities, <br /> on a daily basis.
               However, these are available for a limited time and they are
               subject to change the <br /> next day. You can look for these
               deals while you are about to book the hotel after narrowing down{' '}
               <br /> your choices. On the app, you can check a property that has
-              ‘MMT Exclusive Deal’ button below its <br /> discounted rate. By
+              ‘Travello Exclusive Deal’ button below its <br /> discounted rate. By
               tapping on it, you would know how many offers are available.
             </p>
           </div>

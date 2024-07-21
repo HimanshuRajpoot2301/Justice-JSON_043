@@ -37,7 +37,7 @@ const Navbar = ({ isUserLoggedIn, user }) => {
             <div className={styles.logoWrapper}>
               <a href="/" className={styles.logoimg}>
                 <img
-                  src="https://imgak.mmtcdn.com/pwa_v3/pwa_hotel_assets/header/logo@2x.png"
+                  src="https://i0.wp.com/thepartyingtraveler.com/wp-content/uploads/2018/01/Travello-logo-with-tagline-2.png?ssl=1"
                   alt="Logo"
                 />
               </a>

@@ -24,7 +24,7 @@ export const Flight = () => {
     console.log(stopCheck, check);
     console.log('getFlight');
     dispatch(flightLoading());
-    fetch('https://makemytripback.herokuapp.com/flights')
+    fetch('https://justice-json-043.onrender.com/flights')
       .then((r) => r.json())
       .then((r) => {
         dispatch(addFlights(r));

@@ -199,7 +199,7 @@ const Details = () => {
             })}
           </p>
 
-          <h5>MAKEMYTRIP</h5>
+          <h5>Travello</h5>
           <p>
             {str2.map((ele) => {
               return <span>{ele},</span>;

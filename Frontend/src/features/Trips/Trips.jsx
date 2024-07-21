@@ -22,7 +22,7 @@ export const Trips = () => {
     try {
       const authToken = getValue('userToken');
       const response = await fetch(
-        'https://makemytripback.herokuapp.com/bookings/flights',
+        'https://justice-json-043.onrender.com/bookings/flights',
         {
           method: 'GET',
           headers: {
@@ -47,7 +47,7 @@ export const Trips = () => {
     try {
       const authToken = getValue('userToken');
       const response = await fetch(
-        'https://makemytripback.herokuapp.com/bookings/hotels',
+        'https://justice-json-043.onrender.com/bookings/hotels',
         {
           method: 'GET',
           headers: {

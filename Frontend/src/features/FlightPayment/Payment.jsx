@@ -63,7 +63,7 @@ export const Payment = () => {
       };
       console.log(data);
       const response = await fetch(
-        'https://makemytripback.herokuapp.com/bookings/hotels',
+        'https://justice-json-043.onrender.com/bookings/hotels',
         {
           method: 'POST',
           headers: {
