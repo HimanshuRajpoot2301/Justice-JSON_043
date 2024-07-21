@@ -5,6 +5,7 @@ const session= require("express-session");
 const MongoStore = require('connect-mongo');
 const app = express();
 const authRoute = require("./routes/auth");
+const cors = require('cors');
 app.use(express.json());
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -16,6 +17,10 @@ app.use(session({
       httpOnly: true,
     }
   }));
+  app.use(cors({
+     origin:process.env.FRONT_URL
+  }
+));
 app.get('/',(req,res)=>{
     try {
         res.send("This is a home route")

@@ -8,10 +8,7 @@ const fetchUser = require("../middleware/fetchUser");
 const { Vonage } = require('@vonage/server-sdk');
 const OTP = require("../models/Otp");
 
-// const client = require("twilio")(
-//   process.env.ACCOUNT_SID,
-//   process.env.AUTH_TOKEN
-// );
+
 
 const vonage = new Vonage({
     apiKey: process.env.VONAGE_API_KEY,
