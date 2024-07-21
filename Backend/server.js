@@ -6,6 +6,12 @@ const MongoStore = require('connect-mongo');
 const app = express();
 const authRoute = require("./routes/auth");
 const cors = require('cors');
+const hotelController = require("./controllers/hotels.controller.js");
+
+const bookedFlightRoute = require("./routes/BookedFlight");
+const bookedHotelRoute = require("./routes/BookedHotel");
+const flightController = require("./controllers/flight.controller");
+
 app.use(express.json());
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -30,7 +36,10 @@ app.get('/',(req,res)=>{
     }
 })
 app.use('/auth',authRoute)
-
+app.use("/hotels", hotelController);
+app.use("/bookings", bookedFlightRoute);
+app.use("/bookings", bookedHotelRoute);
+app.use("/flights", flightController);
 
 const port = process.env.PORT || 3000;
 const mongo_url = process.env.MONGO_URI;
