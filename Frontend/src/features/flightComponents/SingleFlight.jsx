@@ -1,13 +1,13 @@
-import React from 'react';
-import styles from './singleflight.module.css';
-import Button from '@mui/material/Button';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import styles from "./singleflight.module.css";
+import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
 import {
   addBookingFlights,
   flightBookingError,
   flightBookingLoading,
-} from '../flightBookingComponents/flightBookingSlice';
-import { useDispatch } from 'react-redux';
+} from "../flightBookingComponents/flightBookingSlice";
+import { useDispatch } from "react-redux";
 export const SingleFlight = ({
   arrival,
   arrival_time,
@@ -38,11 +38,11 @@ export const SingleFlight = ({
     <div className={styles.singleflight} key={_id}>
       <div
         style={{
-          backgroundColor: '#B8FFF9',
-          padding: '0.2px',
-          width: '15%',
-          height: '20px',
-          border: '#42C2FF 1px solid',
+          backgroundColor: "#B8FFF9",
+          padding: "0.2px",
+          width: "15%",
+          height: "20px",
+          border: "#42C2FF 1px solid",
         }}
       >
         <h6 className={styles.guidelineText}>Lock price and pay later</h6>
@@ -51,10 +51,10 @@ export const SingleFlight = ({
         <div
           className={styles.inner_cont}
           style={{
-            fontSize: '14px',
-            fontWeight: '700',
-            marginTop: '2%',
-            marginLeft: '1%',
+            fontSize: "14px",
+            fontWeight: "700",
+            marginTop: "2%",
+            marginLeft: "1%",
           }}
         >
           <span>{name}</span>
@@ -69,9 +69,9 @@ export const SingleFlight = ({
           <hr className={styles.line} />
           <span
             style={{
-              fontSize: '12px',
-              color: 'gray',
-              textAlign: 'center',
+              fontSize: "12px",
+              color: "gray",
+              textAlign: "center",
             }}
           >
             {stops}
@@ -87,20 +87,17 @@ export const SingleFlight = ({
         <Button
           className={styles.buttonBookNow}
           style={{
-            maxHeight: '30px',
-            marginTop: '1.5%',
-            fontSize: '10px',
-            backgroundColor: '#9AD0EC',
-            border: '1px solid #03045E',
-            width: '10%',
+            maxHeight: "30px",
+            marginTop: "1.5%",
+            fontSize: "10px",
+            backgroundColor: "#9AD0EC",
+            border: "1px solid #03045E",
+            width: "10%",
           }}
           onClick={() => handlePageChange(_id)}
         >
           Book Now
         </Button>
-      </div>
-      <div className={styles.discount}>
-        Use MMTSUPER and get FLAT Rs. 309 instant discount on this flight
       </div>
       <div className={styles.details}>
         <span>View Flight Details</span>
