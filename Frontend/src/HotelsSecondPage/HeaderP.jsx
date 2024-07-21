@@ -78,22 +78,21 @@ const HeaderP = () => {
 
   return (
     <>
-      <div className={styleH.container}>
-        <div className={styleH.small_container}>
+      <div  className={styleH.container}>
+        <div style={{}} className={styleH.small_container}>
           {/* top */}
 
-          <div className={styleH.topdiv}>
+          <div   className={styleH.topdiv}>
             <p>
-              {' '}
-              <span>Home</span> <FiChevronRight className={styleH.gretericon} />{' '}
-              Hotels and more{' '}
+              <span>Home</span> <FiChevronRight className={styleH.gretericon} />
+              Hotels and more
             </p>
           </div>
 
-          <div className={styleH.titleMapDiv}>
+          <div  className={styleH.titleMapDiv}>
             <p>Hotels, Villas, Apartments and more</p>
-
-            <img src={mapimg} alt="not found" className={styleH.map_img} />
+{/* 
+            <img src={mapimg} alt="not found" className={styleH.map_img} /> */}
           </div>
 
           <div className={styleH.searchDiv}>

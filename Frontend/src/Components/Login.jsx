@@ -220,7 +220,8 @@ export default function FormDialog() {
 
   return (
     <div>
-      <div className={styles.btn}>
+      <div  style={{padding:"6px"}}
+      className={styles.btn}>
         <Button onClick={handleClickOpen}>Login or create account</Button>
       </div>
       <Dialog PaperProps={{ sx: dialogCss }} open={open} onClose={handleClose}>
@@ -275,10 +276,8 @@ export default function FormDialog() {
                 </div>
                 <div className={styles.loginsignup_text}>LOGIN</div>
                 <div className={styles.google_login_container}>
-                  <img
-                    src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fvectors%2Fgoogle-logo-search-engine-internet-76659%2F&psig=AOvVaw0JwPzP8tT-w3aUV-QT2TAh&ust=1721662456240000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCMD0rs26uIcDFQAAAAAdAAAAABAE"
-                    alt="google logo"
-                  />
+
+               
                   <div>Login With Google</div>
                 </div>
 
