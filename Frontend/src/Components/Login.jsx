@@ -22,13 +22,14 @@ export default function FormDialog() {
   const [registrationModal, setRegistrationModal] = useState(false);
   const [loginModalOtp, setLoginModalOtp] = useState(false);
   const [loginModalEmailOtp, setLoginModalEmailOtp] = useState(false);
-  const [loginOtpNumberChecker, setLoginOtpNumberChecker] = useState(0);
+  const [loginOtpNumberChecker, setLoginOtpNumberChecker] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
-  const [mobile, setMobile] = useState('');
+  const [emailOrMobile, setEmailOrMobile] = useState('');
   const [error, setError] = useState(false);
   const { open, setOpen } = useContext(ListenerContext);
+
   const handleContinueRegistration = async () => {
-    if (mobile.length !== 10) {
+    if (emailOrMobile.length === 0) {
       setError(true);
       return;
     }
@@ -42,7 +43,7 @@ export default function FormDialog() {
             'content-type': 'application/json',
           },
           body: JSON.stringify({
-            mobile_number: Number(mobile),
+            emailOrMobile,
           }),
         }
       );
@@ -66,7 +67,7 @@ export default function FormDialog() {
     }
     try {
       const response = await fetch(
-        `https://justice-json-043.onrender.com/auth/otpverify?mobile_number=${mobile}`,
+        `https://justice-json-043.onrender.com/auth/otpverify?emailOrMobile=${emailOrMobile}`,
         {
           method: 'POST',
           headers: {
@@ -115,14 +116,48 @@ export default function FormDialog() {
   const handleChange = (e) => {
     setError(false);
     let { value } = e.currentTarget;
-    setMobile(value);
+    setEmailOrMobile(value);
   };
 
+  // const handleLogin = async () => {
+  //   if (loginPassword.length === 0) {
+  //     return;
+  //   }
+
+  //   try {
+  //     dispatch(loginRequest());
+  //     const response = await fetch(
+  //       'http://localhost:8080/auth/login',
+  //       {
+  //         method: 'POST',
+  //         headers: {
+  //           'content-type': 'application/json',
+  //         },
+  //         body: JSON.stringify({
+  //           emailOrMobile,
+  //           password: loginPassword,
+  //         }),
+  //       }
+  //     );
+  //     const json = await response.json();
+  //     console.log(json);
+  //     if (json.status === 200) {
+  //       dispatch(loginSuccess(json));
+  //       getProfile();
+  //     } else {
+  //       dispatch(loginError(json.error));
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //     dispatch(loginError(error));
+  //   }
+  // };
   const handleLogin = async () => {
-    if (loginPassword.length === 0) {
+    if (loginPassword.length === 0 || emailOrMobile.length === 0) {
+      console.log('Email or mobile number and password must not be empty.');
       return;
     }
-
+  
     try {
       dispatch(loginRequest());
       const response = await fetch(
@@ -130,27 +165,28 @@ export default function FormDialog() {
         {
           method: 'POST',
           headers: {
-            'content-type': 'application/json',
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            mobile_number: Number(mobile),
+            identifier: emailOrMobile, // Update key to match backend
             password: loginPassword,
           }),
         }
       );
       const json = await response.json();
       console.log(json);
-      if (json.status === 200) {
+      if (response.ok) { // Check for successful response
         dispatch(loginSuccess(json));
         getProfile();
       } else {
-        dispatch(loginError(json.error));
+        dispatch(loginError(json.error || 'Login failed'));
       }
     } catch (error) {
       console.log(error);
-      dispatch(loginError(error));
+      dispatch(loginError(error.message || 'An error occurred'));
     }
   };
+  
 
   const getProfile = async () => {
     try {
@@ -177,7 +213,6 @@ export default function FormDialog() {
 
   const dialogCss = {
     width: '40%',
-
     height: 550,
     minWidth: '350px',
     margin: 'auto',
@@ -225,10 +260,10 @@ export default function FormDialog() {
                 <div className={styles.login_sign_text}>Login</div>
                 <div className={styles.email_mobile_text}>
                   <p>Email or Mobile Number</p>
-                  <input type="text" value={mobile} onChange={handleChange} />
+                  <input type="text" value={emailOrMobile} onChange={handleChange} />
                   {error && (
                     <p style={{ color: 'red' }}>
-                      Please enter valid mobile number
+                      Please enter valid email or mobile number
                     </p>
                   )}
                 </div>
@@ -241,7 +276,7 @@ export default function FormDialog() {
                 <div className={styles.loginsignup_text}>LOGIN</div>
                 <div className={styles.google_login_container}>
                   <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                    src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fvectors%2Fgoogle-logo-search-engine-internet-76659%2F&psig=AOvVaw0JwPzP8tT-w3aUV-QT2TAh&ust=1721662456240000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCMD0rs26uIcDFQAAAAAdAAAAABAE"
                     alt="google logo"
                   />
                   <div>Login With Google</div>
@@ -271,7 +306,7 @@ export default function FormDialog() {
                   Verify Your Mobile Number
                 </div>
                 <div className={styles.otp_verifytext_mobile}>
-                  OTP has been sent to MOBILE
+                  OTP has been sent to your number
                 </div>
                 <div className={styles.otp_text}>OTP</div>
                 <div className={styles.otp_mobile_input}>
@@ -284,9 +319,9 @@ export default function FormDialog() {
                 </div>
 
                 <button
-                  disabled={loginOtpNumberChecker < 999}
+                  disabled={loginOtpNumberChecker.length !== 4}
                   className={
-                    loginOtpNumberChecker > 999
+                    loginOtpNumberChecker.length === 4
                       ? styles.otp_mobile_login_button
                       : styles.colorGrey
                   }
@@ -302,9 +337,7 @@ export default function FormDialog() {
                   or Login via Password
                 </div>
               </div>
-              {/* <LoginModalOtp /> */}
 
-              {/* loginModalEmailOtp start */}
               <div
                 className={
                   loginModalEmailOtp
@@ -312,41 +345,26 @@ export default function FormDialog() {
                     : styles.display_none
                 }
               >
-                <div
-                  onClick={handleBacktoHomePagefromEmailotp}
-                  className={styles.back_otp_text}
-                >
-                  Back
+                <div className={styles.back_otp_text}>Back</div>
+                <div className={styles.otp_verifytext}>Login via Password</div>
+                <div className={styles.otp_verifytext_mobile}>
+                  Please enter password
                 </div>
-                <div className={styles.otp_verifytext}>Login With Password</div>
                 <div className={styles.otp_text}>Password</div>
                 <div className={styles.otp_mobile_input}>
                   <input
-                    type="text"
-                    placeholder="Minimum 6 characters"
-                    onChange={(e) => setLoginPassword(e.target.value)}
+                    type="password"
+                    onChange={(e) => setLoginPassword(e.currentTarget.value)}
                   />
                 </div>
-                <button
-                  // disabled={loginPassword.length < 5}
-                  className={
-                    loginPassword.length > 5
-                      ? styles.otp_mobile_login_button
-                      : styles.colorGrey
-                  }
-                  onClick={() => handleLogin()}
+                <div
+                  onClick={handleLogin}
+                  className={styles.otp_mobile_login_button}
                 >
                   Login
-                </button>
-
-                <div
-                  onClick={handleBackInLoginEmail}
-                  className={styles.otp_login_forgot_text}
-                >
-                  or Login via OTP
                 </div>
+                <div className={styles.otp_login_forgot_text}>Forgot Password</div>
               </div>
-              {/* loginModalEmailOtp end */}
             </>
           )}
         </DialogContent>

@@ -13,12 +13,12 @@ export const loginRequest = () => ({
 
 export const loginSuccess = (payload) => ({
   type: USER_LOGIN_SUCCESS,
-  payload,
+  payload, // Ensure payload is an object with an authToken
 });
 
 export const loginError = (error) => ({
   type: USER_LOGIN_ERROR,
-  payload: error,
+  payload: { error }, // Wrap error in an object if needed
 });
 
 export const logout = () => ({
@@ -27,10 +27,10 @@ export const logout = () => ({
 
 export const signUp = (payload) => ({
   type: USER_SIGN_UP,
-  payload,
+  payload, // Ensure payload is an object with an authToken
 });
 
 export const getUserName = (payload) => ({
   type: USER_NAME,
-  payload,
+  payload, // Ensure payload is a string (userName)
 });
