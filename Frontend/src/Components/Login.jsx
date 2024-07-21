@@ -35,7 +35,7 @@ export default function FormDialog() {
 
     try {
       const response = await fetch(
-        'https://makemytripback.herokuapp.com/auth/otplogin',
+        'https://justice-json-043.onrender.com/auth/otplogin',
         {
           method: 'POST',
           headers: {
@@ -66,7 +66,7 @@ export default function FormDialog() {
     }
     try {
       const response = await fetch(
-        `https://makemytripback.herokuapp.com/auth/otpverify?mobile_number=${mobile}`,
+        `https://justice-json-043.onrender.com/auth/otpverify?mobile_number=${mobile}`,
         {
           method: 'POST',
           headers: {
@@ -126,7 +126,7 @@ export default function FormDialog() {
     try {
       dispatch(loginRequest());
       const response = await fetch(
-        'https://makemytripback.herokuapp.com/auth/login',
+        'https://justice-json-043.onrender.com/auth/login',
         {
           method: 'POST',
           headers: {
@@ -156,7 +156,7 @@ export default function FormDialog() {
     try {
       const authToken = getValue('userToken');
       const response = await fetch(
-        'https://makemytripback.herokuapp.com/auth/getuser',
+        'https://justice-json-043.onrender.com/auth/getuser',
         {
           method: 'GET',
           headers: {

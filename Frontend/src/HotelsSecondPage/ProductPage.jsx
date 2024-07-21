@@ -20,7 +20,7 @@ const ProductPage = () => {
   const dispatch = useDispatch();
   const getHotels = () => {
     dispatch(hotelLoading());
-    fetch('https://makemytripback.herokuapp.com/hotels')
+    fetch('https://justice-json-043.onrender.com/hotels')
       .then((r) => r.json())
       .then((r) => {
         dispatch(addHotels(r));

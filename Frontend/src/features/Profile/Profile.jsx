@@ -50,7 +50,7 @@ export const Profile = () => {
     try {
       const authToken = getValue('userToken');
       const response = await fetch(
-        'https://makemytripback.herokuapp.com/auth/getuser',
+        'https://justice-json-043.onrender.com/auth/getuser',
         {
           method: 'GET',
           headers: {
@@ -85,7 +85,7 @@ export const Profile = () => {
       };
       console.log(data);
       const response = await fetch(
-        'https://makemytripback.herokuapp.com/auth/edituser',
+        'https://justice-json-043.onrender.com/auth/edituser',
         {
           method: 'PUT',
           mode: 'cors',

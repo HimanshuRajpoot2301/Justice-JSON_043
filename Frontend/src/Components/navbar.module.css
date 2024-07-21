@@ -18,20 +18,24 @@
 .logoWrapper {
   height: auto;
   display: flex;
+  /* background-color: red; */
 }
 
 /* make my trip anchor tag logo container */
-
 .logoimg {
   width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  
 }
 
 /* make my trip anchor tag img container */
 .logoimg img {
-  width: 70%;
+  width: 150px;
+  height: auto;
+  background-color: white;
+  
 }
 
 /* .hamburgr_menu */
@@ -61,7 +65,7 @@
   flex-grow: 12;
   justify-content: space-evenly;
   align-items: center;
-  padding-top: 15px;
+ 
 }
 
 .iconWrapper > div {

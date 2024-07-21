@@ -23,7 +23,7 @@ const Card = ({
   const dispatch = useDispatch();
   const getSingleHotel = (id) => {
     dispatch(hotelBookingLoading());
-    fetch(`https://makemytripback.herokuapp.com/hotels/${id}`)
+    fetch(`https://justice-json-043.onrender.com/hotels/${id}`)
       .then((r) => r.json())
       .then((r) => {
         dispatch(addHotelBooking(r));
@@ -52,7 +52,7 @@ const Card = ({
             <div className={style_c.smallimg}>
               <img src={extraimageUrl[0]} alt="not found" />
               <img src={extraimageUrl[1]} alt="not found" />
-              <img src={extraimageUrl[2]} alt="not found" />
+              {/* <img src={extraimageUrl[2]} alt="not found" /> */}
             </div>
           </div>
 
@@ -64,8 +64,9 @@ const Card = ({
 
               <div className={style_c.rating}>
                 <div className={style_c.icon_ratingdiv}>
-                  <img src={mtripicon} alt="icon" />
-
+                  {/* <img src={mtripicon} alt="icon" /> */}
+                  <img src="https://t4.ftcdn.net/jpg/05/40/09/17/360_F_540091788_AvDyNUSbtnKQfNccukuFa3ZlsHFnMYrK.jpg" alt="" />
+                  {/* <i class="fa-regular fa-star fa-lg" style="color: #FFD43B;"></i> */}
                   <p className={style_c.rating_p}>
                     <span>{ratings}</span> /5{' '}
                     {ratings >= 4 ? 'Good' : 'Okay-ish'}

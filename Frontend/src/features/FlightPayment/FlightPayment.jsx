@@ -66,7 +66,7 @@ export const FlightPayment = () => {
       };
       console.log(data);
       const response = await fetch(
-        'https://makemytripback.herokuapp.com/bookings/flights',
+        'https://justice-json-043.onrender.com/bookings/flights',
         {
           method: 'POST',
           headers: {

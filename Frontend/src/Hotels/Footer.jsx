@@ -10,12 +10,12 @@ const Footer = () => {
     <>
       <div className={style_f.container}>
         <div className={style_f.f_icon}>
-          <a href="https://twitter.com/makemytrip/">
+          <a href="/">
             {' '}
             <FaTwitter className={style_f.twitter} />
           </a>
 
-          <a href="https://www.facebook.com/makemytrip/">
+          <a href="/">
             {' '}
             <FaFacebookF className={style_f.facebook} />{' '}
           </a>
@@ -24,18 +24,18 @@ const Footer = () => {
         <div className={style_f.f_cright}>
           <span className={style_f.copyright}>
             {' '}
-            © 2022 MAKEMYTRIP PVT. LTD.
+            © 2024 Travello PVT. LTD.
           </span>
           <span className={style_f.counteryName}>
             {' '}
-            Country
-            <a href="https://www.makemytrip.com/" className={style_f.country}>
+          Available: 
+            <a href="/" className={style_f.country}>
               India
             </a>
-            <a href="https://www.makemytrip.com/" className={style_f.country}>
+            <a href="/" className={style_f.country}>
               USA
             </a>
-            <a href="https://www.makemytrip.com/" className={style_f.country}>
+            <a href="/" className={style_f.country}>
               UAE
             </a>
           </span>

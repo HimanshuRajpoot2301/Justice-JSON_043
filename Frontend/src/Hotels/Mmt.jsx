@@ -7,7 +7,7 @@ const Mmt = () => {
         <div className={style_m.bigcard}>
           <div className={style_m.title}>
             <h4> INTRODUCING </h4>
-            <h1>MMT Luxe</h1>
+            <h1>Travello Luxe</h1>
             <h1>Selections</h1>
             <p>
               Escape to the epitome of luxury, packed <br />
@@ -23,7 +23,7 @@ const Mmt = () => {
                 alt="not found"
               />
               <div className={style_m.titleCard}>
-                <h2>Discover by Brands</h2>
+                <h3>Discover by Brands</h3>
                 <p>
                   Taj, Marriott,Oberoi,Hyatt & <br /> Mor{' '}
                 </p>
@@ -36,7 +36,7 @@ const Mmt = () => {
                 alt="not found"
               />
               <div className={style_m.titleCard}>
-                <h2>Luxe Vilas</h2>
+                <h3>Luxe Vilas</h3>
                 <p>
                   Premimu Villas with Superlative <br /> Experience
                 </p>
@@ -49,7 +49,7 @@ const Mmt = () => {
                 alt="not found"
               />
               <div className={style_m.titleCard}>
-                <h2>Discover by Themes</h2>
+                <h3>Discover by Themes</h3>
                 <p>
                   Explore Luxury Stays based on <br /> your interest{' '}
                 </p>
