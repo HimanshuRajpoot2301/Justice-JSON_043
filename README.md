@@ -63,6 +63,10 @@ npm run dev
 ## Screenshots
 
 <img src="./Frontend/src/imgs/Homepage.jpeg" style="box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.8)">
+<img src="./Frontend/src/imgs/Hotels.jpeg" style="box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.8)">
+<img src="./Frontend/src/imgs/Flight.jpeg" style="box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.8)">
+<img src="./Frontend/src/imgs/Payment.jpeg" style="box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.8)">
+<img src="./Frontend/src/imgs/Profile.jpeg" style="box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.8)">
 
 
 ## Authors
