@@ -41,42 +41,9 @@ https://baidu-bandits-072-git-main-sanjukumari-techs-projects.vercel.app/
 ## Directory Structure
 
 ```plaintext
-Baidu-Bandits/
-├── public/
-├── src/
-│   ├── AllPages/
-│   │   ├── admin/
-│   │   │   ├── AdminDashboard.jsx
-│   │   │   ├── AdminNavbar.jsx
-│   │   │   ├── UserModal.jsx
-│   │   │   ├── adminstyles.css
-│   │   ├── ActivityTracker.jsx
-│   │   ├── AllRoutes.jsx
-│   │   ├── Auth.jsx
-│   │   ├── Dashboard.jsx
-│   │   ├── DoctorAppointment.jsx
-│   │   ├── ExerciseRecommendation.jsx
-│   │   ├── Home.jsx
-│   │   ├── MentalWellness.jsx
-│   │   ├── Nutrition.jsx
-│   │   ├── PersonalTraining.jsx
-│   ├── assets/
-|   │   ├── icons/
-│   ├── auth/
-│   ├── pageComponents/
-|   │   ├── MentalWellnessComp.jsx
-|   │   ├── NutritionComp.jsx
-│   ├── redux/
-|   │   ├── actionTypes.js
-|   │   ├── reducer.js
-|   │   ├── store.js
-│   ├── styles/
-│   │   ├── mentalWellness.css
-│   ├── App.css
-│   ├── App.jsx
-│   ├── main.jsx
-│   ├── index.css
-├── index.html/
+Justice-Json_043/
+|-Backend
+|-Frontend
 ```
 
 
