@@ -1,5 +1,5 @@
 
-# Baidu-Bandits_072
+# Justice-JSON_043
 
 Welcome to Travello! Our platform combines flight and hotel bookings with robust trip planning features, perfect for solo travelers or groups. Users can search for and book flights, reserve hotels with filtering options, and access exclusive discounts. Group trip planning and a reviews system foster informed travel decisions. The tech stack includes a React and JavaScript frontend, Node.js backend, and MongoDB database, ensuring dynamic, efficient, and reliable performance. The responsive design guarantees seamless use across all devices. Secure user authentication protects accounts and plans. Start planning unforgettable journeys with ease and convenience.
 
