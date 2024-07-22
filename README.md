@@ -8,10 +8,9 @@ Welcome to Travello! Our platform combines flight and hotel bookings with robust
 
 ## Deployed Link
 
-https://be-1fit.netlify.app/
+[https://be-1fit.netlify.app/](https://travello-01.netlify.app/)
 
 
-https://baidu-bandits-072-git-main-sanjukumari-techs-projects.vercel.app/
 
 
 ## Features
