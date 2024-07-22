@@ -95,8 +95,7 @@ npm run dev
 ````
 ## Screenshots
 
-<img src="./Baidu-Bandits/src/assets/desktopview.png" alt="Mobile View" width="500" 
-style="box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.8);">
+<img src="./Frontend/src/imgs/Homepage.jpeg" style="box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.8)">
 
 
 ## Authors
