@@ -1,7 +1,7 @@
 
 # Baidu-Bandits_072
 
-The Health and Wellness Project is a comprehensive application designed to promote a healthier lifestyle by integrating physical activity tracking, medical appointments, mental health support, and exercise scheduling. This project aims to provide users with a holistic approach to their health and wellness, leveraging modern technology to facilitate healthier habits and improved well-being.
+Welcome to Travello! Our platform combines flight and hotel bookings with robust trip planning features, perfect for solo travelers or groups. Users can search for and book flights, reserve hotels with filtering options, and access exclusive discounts. Group trip planning and a reviews system foster informed travel decisions. The tech stack includes a React and JavaScript frontend, Node.js backend, and MongoDB database, ensuring dynamic, efficient, and reliable performance. The responsive design guarantees seamless use across all devices. Secure user authentication protects accounts and plans. Start planning unforgettable journeys with ease and convenience.
 
 
 
@@ -16,22 +16,26 @@ https://baidu-bandits-072-git-main-sanjukumari-techs-projects.vercel.app/
 
 ## Features
 
-- Physical Activity Tracking : View detailed statistics and progress reports to stay motivated and track improvement over time.
+- Flight Bookings: Users can search for and book flights with ease, comparing prices and schedules to find the best options.
 
-- Doctor Appointment Booking : Book appointments with doctors directly through the application, with confirmation and reminder notifications.
+- Hotel Reservations: Find and reserve hotels, with options to filter by price, amenities, and location.
 
-- Nutrition  : Receive personalized suggestions on how to improve their physical health based on user's goal data.
+- Group Trip Planning: Organize trips with friends by creating and managing group itineraries, ensuring everyone is on the same page.
 
-- Mental Health Support : Receive personalized suggestions on how to improve your mental health based on your mood data.
+- Discounts and Deals: Access exclusive discounts and deals on flights and hotels, helping users save on their travels.
 
-- Exercise Scheduling Planning : Create and customize your exercise schedule to fit your lifestyle and preferences.
+- Reviews and Ratings: Read and write reviews for flights, hotels, and travel experiences, fostering a community of informed travelers.
+  
+- User Authentication: Secure user accounts with registration and login functionality, ensuring personalized travel planning.
 
 
 ## Tech Stack
 
-**Client:** Reactjs, Redux, Chakra UI
+**Client:** Reactjs, Redux, Html5, CSS3
 
-**Server:** Firebase
+**Server:** Node.js, Express.js
+
+**Database:** MongoDB
 
 ---
 ## Directory Structure
@@ -81,14 +85,11 @@ Baidu-Bandits/
 To deploy this project run
 
 ```
-  git clone https://github.com/sanjukumari-tech/Baidu-Bandits_072.git
+  git clone https://github.com/HimanshuRajpoot2301/Justice-JSON_043.git
 ```
 
 ````
 npm install
-npm i firebase
-npm i redux react-redux
-npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
 
 npm run dev
 ````
@@ -101,7 +102,7 @@ style="box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.8);">
 ## Authors
 
 - [Mahesh S R](https://github.com/mahesh06111999)
-- [Sanju Kumari](https://github.com/sanjukumari-tech)
-- [Subhankar Banik](https://github.com/subhankarbanik)
-- [Chaitanya Dakhale](https://github.com/Chaitanya-05)
+- [Himanshu Rajpoot](https://github.com/HimanshuRajpoot2301)
+- [Adarsh Chaturvedi](https://github.com/Adarsh-ch)
+- [Mohammad Tehreem](https://github.com/mohammadtehreem)
 
